@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 16:25:46 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/01/07 14:45:16 by jenibaud         ###   ########.fr       */
+/*   Created: 2025/01/07 14:43:29 by jenibaud          #+#    #+#             */
+/*   Updated: 2025/01/07 16:00:51 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "so_long.h"
 
-# include "minilibx-linux/mlx.h"
-# include "minilibx-linux/mlx_int.h"
-# include "src/libft/libft.h"
+void	ft_putstr(char *str)
+{
+	int	i;
 
-void	ft_putstr(char *str);
-
-#endif
+	i = 0;
+	while(str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jenibaud <jean.nibaudeau2@outlook.fr>      +#+  +:+       +#+        */
+/*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 18:17:08 by jenibaud          #+#    #+#             */
-/*   Updated: 2024/10/14 16:34:18 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/01/07 16:17:49 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {

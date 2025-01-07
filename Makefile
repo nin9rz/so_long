@@ -27,18 +27,25 @@ DEFAULT = "\e[39m"
 
 #-------------------------------------------------------SRCS----------------------------------------------------#
 
+PRINTF_PATH = src/ft_printf
+PRINTF = $(PRINTF_PATH)/libftprintf.a
+
 LIBFT_PATH = src/libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
 MLX_PATH = minilibx-linux/
 MLX = $(MLX_PATH)/libmlx_Linux.a
 
-SRCS = main.c 
+SRCS = main.c\
+		utils.c
 
 
 #-----------------------------------------------------RULES-----------------------------------------------#
 
 all: $(NAME)
+
+$(PRINTF):
+	@$(MAKE) -C $(PRINTF_PATH)
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_PATH)
@@ -46,8 +53,8 @@ $(LIBFT):
 $(MLX):
 	@$(MAKE) -C $(MLX_PATH) -s -j
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) -Iminilibx-linux $(MLX) -lXext -lX11 -lm -lz
+$(NAME): $(LIBFT) $(PRINTF) $(OBJS) $(MLX)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(PRINTF) -Iminilibx-linux $(MLX) -lXext -lX11 -lm -lz
 	@echo $(BLUE)
 	@echo "███████  ██████          ██       ██████  ███    ██  ██████  "
 	@echo "██      ██    ██         ██      ██    ██ ████   ██ ██       "
@@ -63,6 +70,7 @@ $(NAME): $(OBJS) $(LIBFT) $(MLX)
 
 clean:
 	@$(MAKE) -C $(LIBFT_PATH) clean
+	@$(MAKE) -C $(PRINTF_PATH) clean
 	@$(MAKE) -C $(MLX_PATH) clean
 	@rm -f $(OBJS)
 	@echo $(YELLOW)
@@ -80,6 +88,7 @@ clean:
 	@echo $(DEFAULT)
 
 fclean: clean
+	@$(MAKE) -C $(PRINTF_PATH) fclean
 	@$(MAKE) -C $(LIBFT_PATH) fclean
 	@$(MAKE) -C $(MLX_PATH) fclean
 	@rm -f $(NAME)
