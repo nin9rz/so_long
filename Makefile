@@ -71,7 +71,6 @@ $(NAME): $(LIBFT) $(PRINTF) $(OBJS) $(MLX)
 clean:
 	@$(MAKE) -C $(LIBFT_PATH) clean
 	@$(MAKE) -C $(PRINTF_PATH) clean
-	@$(MAKE) -C $(MLX_PATH) clean
 	@rm -f $(OBJS)
 	@echo $(YELLOW)
 	@echo "███████  ██████          ██       ██████  ███    ██  ██████      ██ ███████"
@@ -90,5 +89,6 @@ clean:
 fclean: clean
 	@$(MAKE) -C $(PRINTF_PATH) fclean
 	@$(MAKE) -C $(LIBFT_PATH) fclean
-	@$(MAKE) -C $(MLX_PATH) fclean
 	@rm -f $(NAME)
+
+re : fclean all
