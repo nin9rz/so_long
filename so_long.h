@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:25:46 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/01/07 14:45:16 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:49:03 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,24 @@
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
 # include "src/libft/libft.h"
+# include "src/ft_printf/ft_printf.h"
+# include "src/gnl/get_next_line.h"
 
-void	ft_putstr(char *str);
+/*------------Parsing------------*/
+int		check_errors(char **argv);
+
+/*------------Structures------------*/
+typedef struct	s_map
+{
+	char	**map;
+	int		width;
+	int		height;
+}	t_map;
+
+typedef struct s_game
+{
+	t_map	*map;
+}	t_game;
+
 
 #endif

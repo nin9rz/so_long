@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jenibaud <jean.nibaudeau2@outlook.fr>      +#+  +:+       +#+        */
+/*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:45:32 by jenibaud          #+#    #+#             */
-/*   Updated: 2024/10/21 10:46:39 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:40:06 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ void	ft_putnbr_fd(int n, int fd);
 /*					Bonus part					*/
 /*##############################################*/
 
-typedef struct s_list
+typedef struct s_list_libft
 {
-	void			*content;
-	struct s_list	*next;
+	void				*content;
+	struct s_list_libft	*next;
 }					t_list;
 
 t_list	*ft_lstnew(void *content);

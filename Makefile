@@ -37,7 +37,8 @@ MLX_PATH = minilibx-linux/
 MLX = $(MLX_PATH)/libmlx_Linux.a
 
 SRCS = main.c\
-		utils.c
+		utils.c\
+		parsing.c
 
 
 #-----------------------------------------------------RULES-----------------------------------------------#

@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:26:44 by jenibaud          #+#    #+#             */
-/*   Updated: 2024/11/13 17:12:48 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:44:11 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*get_next_line(int fd)
 {
-	static t_list	*stash = NULL;
+	static t_list_gnl	*stash = NULL;
 	char			*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -37,7 +37,7 @@ char	*get_next_line(int fd)
 
 /* Uses read() to add characters to the stash */
 
-void	read_and_stash(int fd, t_list **stash)
+void	read_and_stash(int fd, t_list_gnl **stash)
 {
 	char	*buf;
 	int		readed;
@@ -64,13 +64,13 @@ void	read_and_stash(int fd, t_list **stash)
 
 /* Adds the content of our buffer to the end of our stash */
 
-void	add_to_stash(t_list **stash, char *buf, int readed)
+void	add_to_stash(t_list_gnl **stash, char *buf, int readed)
 {
 	int		i;
-	t_list	*last;
-	t_list	*new_node;
+	t_list_gnl	*last;
+	t_list_gnl	*new_node;
 
-	new_node = malloc(sizeof(t_list));
+	new_node = malloc(sizeof(t_list_gnl));
 	if (new_node == NULL)
 		return ;
 	new_node->next = NULL;
@@ -96,7 +96,7 @@ void	add_to_stash(t_list **stash, char *buf, int readed)
 /* Extracts all characters from our stash and stores them in out line.
  * stopping after the first \n it encounters */
 
-void	extract_line(t_list *stash, char **line)
+void	extract_line(t_list_gnl *stash, char **line)
 {
 	int	i;
 	int	j;
@@ -128,14 +128,14 @@ void	extract_line(t_list *stash, char **line)
  * anymore. This function clears the stash so only the characters that have
  * not been returned at the end of get_next_line remain in our static stash. */
 
-void	clean_stash(t_list **stash)
+void	clean_stash(t_list_gnl **stash)
 {
-	t_list	*last;
-	t_list	*clean_node;
+	t_list_gnl	*last;
+	t_list_gnl	*clean_node;
 	int		i;
 	int		j;
 
-	clean_node = malloc(sizeof(t_list));
+	clean_node = malloc(sizeof(t_list_gnl));
 	if (stash == NULL || clean_node == NULL)
 		return ;
 	clean_node->next = NULL;
@@ -145,7 +145,7 @@ void	clean_stash(t_list **stash)
 		i++;
 	if (last->content && last->content[i] == '\n')
 		i++;
-	clean_node->content = malloc(((ft_strlen(last->content) - i) + 1));
+	clean_node->content = malloc(((ft_strlen_gnl(last->content) - i) + 1));
 	if (clean_node->content == NULL)
 		return ;
 	j = 0;

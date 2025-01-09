@@ -6,20 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:43:29 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/01/07 16:00:51 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:03:33 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-void	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while(str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-}
