@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:26:44 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/01/09 14:44:11 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:43:14 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*get_next_line(int fd)
 {
 	static t_list_gnl	*stash = NULL;
-	char			*line;
+	char				*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -66,7 +66,7 @@ void	read_and_stash(int fd, t_list_gnl **stash)
 
 void	add_to_stash(t_list_gnl **stash, char *buf, int readed)
 {
-	int		i;
+	int			i;
 	t_list_gnl	*last;
 	t_list_gnl	*new_node;
 
@@ -132,8 +132,8 @@ void	clean_stash(t_list_gnl **stash)
 {
 	t_list_gnl	*last;
 	t_list_gnl	*clean_node;
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 
 	clean_node = malloc(sizeof(t_list_gnl));
 	if (stash == NULL || clean_node == NULL)

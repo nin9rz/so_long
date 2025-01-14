@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 11:37:24 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/01/09 14:44:20 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/01/10 12:44:43 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	found_newline(t_list_gnl *stash)
 {
-	int		i;
+	int			i;
 	t_list_gnl	*current;
 
 	if (stash == NULL)

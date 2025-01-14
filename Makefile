@@ -36,9 +36,12 @@ LIBFT = $(LIBFT_PATH)/libft.a
 MLX_PATH = minilibx-linux/
 MLX = $(MLX_PATH)/libmlx_Linux.a
 
-SRCS = main.c\
+SRCS =	src/gnl/get_next_line.c\
+		src/gnl/get_next_line_utils.c\
+		main.c\
 		utils.c\
-		parsing.c
+		parsing.c\
+		map_fill.c
 
 
 #-----------------------------------------------------RULES-----------------------------------------------#
