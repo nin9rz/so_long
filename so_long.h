@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:25:46 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/01/14 13:45:18 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/03/27 17:04:16 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct	s_map
 	char	**map;
 	int		width;
 	int		height;
+	int		posx;
+	int		posy;
 }	t_map;
 
 typedef struct s_game
@@ -43,5 +45,11 @@ int		fill_map(char *file, t_game *game);
 int		count_lines(char *file);
 int		is_map_rectangular(t_game *game);
 int		parse(char *file, t_game *game);
+int		flood_fill(t_map OGmap);
+int		get_player_position(t_game *game);
+int		get_exit(t_game *game);
+void	flood(char **map, int x, int y);
+char	**map_cpy(t_map OGmap);
+int		is_map_solvable(char **map);
 
 #endif

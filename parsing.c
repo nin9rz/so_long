@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 18:35:42 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/01/14 14:37:19 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:04:20 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,67 @@
 
 int	parse(char *file, t_game *game)
 {
-	printf("coucou\n");
 	if (!fill_map(file, game))
 		return (0);
 	if (!is_map_rectangular(game))
 		return (0);
+	if (!get_player_position(game))
+		return (0);
+	if (!get_exit(game))
+		return (0);
+	if (!flood_fill(game->map))
+		return (0);
 	return (1);
+}
+
+int	get_player_position(t_game *game)
+{
+	int	i;
+	int	j;
+	int	res;
+
+	i = 0;
+	j = 0;
+	res = 0;
+	while (game->map.map[j])
+	{
+		while (game->map.map[j][i] != '\n')
+		{
+			if (game->map.map[j][i] == 'P')
+			{
+				game->map.posy = j;
+				game->map.posx = i;
+				res = 1;
+			}
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+	return (res);
+}
+
+int	get_exit(t_game *game)
+{
+	int	i;
+	int	j;
+	int	res;
+
+	i = 0;
+	j = 0;
+	res = 0;
+	while (game->map.map[j])
+	{
+		while (game->map.map[j][i] != '\n')
+		{
+			if (game->map.map[j][i] == 'E')
+				res = 1;
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+	return (res);
 }
 
 int	is_map_rectangular(t_game *game)
@@ -27,7 +82,7 @@ int	is_map_rectangular(t_game *game)
 	char	*temp;
 	int		i;
 	int		len;
-	
+
 	i = 0;
 	temp = game->map.map[i];
 	while (temp != NULL)
@@ -35,7 +90,7 @@ int	is_map_rectangular(t_game *game)
 		len = ft_strlen(temp);
 		if (game->map.width != len)
 		{
-			ft_printf("Error : map not rectangular.");
+			ft_printf("\nError : map not rectangular.");
 			return (0);
 		}
 		i++;

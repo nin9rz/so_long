@@ -6,17 +6,17 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:55:15 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/01/14 13:58:03 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/03/27 17:25:52 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		count_lines(char *file)
+int	count_lines(char *file)
 {
-	int	i;
-	int	fd;
-	char *temp;
+	int		i;
+	int		fd;
+	char	*temp;
 
 	i = 0;
 	temp = NULL;
@@ -30,19 +30,20 @@ int		count_lines(char *file)
 	while (temp != NULL)
 	{
 		i++;
+		free(temp);
 		temp = get_next_line(fd);
 	}
 	close(fd);
 	return (i);
 }
 
-int		fill_map(char *file, t_game *game)
+int	fill_map(char *file, t_game *game)
 {
 	int		i;
 	int		fd;
 	char	*temp;
 	int		nbr_lines;
-	
+
 	nbr_lines = count_lines(file);
 	game->map.map = malloc((nbr_lines + 1) * sizeof(char *));
 	i = 0;

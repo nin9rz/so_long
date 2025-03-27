@@ -41,7 +41,8 @@ SRCS =	src/gnl/get_next_line.c\
 		main.c\
 		utils.c\
 		parsing.c\
-		map_fill.c
+		map_fill.c\
+		flood_fill.c
 
 
 #-----------------------------------------------------RULES-----------------------------------------------#
