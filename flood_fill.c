@@ -6,13 +6,13 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:15:06 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/03/27 17:20:29 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/03/27 17:34:58 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int		flood_fill(t_map OGmap)
+int	flood_fill(t_map OGmap)
 {
 	int		x;
 	int		y;
@@ -55,17 +55,17 @@ char	**map_cpy(t_map OGmap)
 void	flood(char **map, int x, int y)
 {
 	map[x][y] = '1';
-	if (map[x-1][y] != '1')
-		flood(map, x-1, y);
-	if (map[x][y+1] != '1')
-		flood(map, x, y+1);
-	if (map[x+1][y] != '1')
-		flood(map, x+1, y);
-	if (map[x][y-1] != '1')
-		flood(map, x, y-1);
+	if (map[x -1][y] != '1')
+		flood(map, x -1, y);
+	if (map[x][y +1] != '1')
+		flood(map, x, y +1);
+	if (map[x +1][y] != '1')
+		flood(map, x +1, y);
+	if (map[x][y -1] != '1')
+		flood(map, x, y -1);
 }
 
-int		is_map_solvable(char **map)
+int	is_map_solvable(char **map)
 {
 	int		i;
 	int		j;

@@ -2,8 +2,3 @@ finir parsing :
 
 - flood_fill :
 
-etape 1 : copier map (strdup)
-etape 2 : foction recursive qui transforme tout en mur sauf les murs
-si il reste qutre chose que 0 ou 1 la map est fausse (haut,droite,bas,gauche)
-
-VERIFIER SI EXIT.

@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:53:36 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/03/27 17:29:47 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:48:53 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,25 @@ void	free_map(char **map)
 	free(map);
 }
 
+int	key_hook(int keycode, t_game *game)
+{
+	if (keycode == ESC_KEY)
+	{
+		mlx_loop_end(game->mlx);
+		return (0);
+	}
+	return (0);
+}
+
+int	close_window(t_game *game)
+{
+	mlx_loop_end(game->mlx);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	(void)argc;
-	//void	*mlx;
-	//void	*mlx_win;
 	t_game	game;
 
 	if (!name_ok(argv[1]))
@@ -56,8 +70,16 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 
-	//mlx = mlx_init();
-	//mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	//mlx_loop(mlx);
+	game.mlx = mlx_init();
+	game.mlx_win = mlx_new_window(game.mlx, (game.map.width * 32), (game.map.height * 32), "so_short");
+	load_images(&game);
+	mlx_put_image_to_window(game.mlx, game.mlx_win, game.wall, 0, 0);
+	mlx_key_hook(game.mlx_win, key_hook, &game);
+	mlx_hook(game.mlx_win, 17, 1L<<0, close_window, &game);
+	mlx_loop(game.mlx);
+	mlx_destroy_window(game.mlx, game.mlx_win);
+	mlx_destroy_display(game.mlx);
+	free(game.mlx);
 	free_map(game.map.map);
+	return (0);
 }
