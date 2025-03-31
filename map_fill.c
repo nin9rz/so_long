@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:55:15 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/03/27 17:25:52 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/03/31 17:05:51 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,7 @@ int	fill_map(char *file, t_game *game)
 	game->map.width = ft_strlen(temp);
 	while (i < nbr_lines)
 	{
-		game->map.map[i] = temp;
-		ft_printf("%s", temp);//retirer avant de push
-		i++;
+		game->map.map[i++] = temp;
 		temp = get_next_line(fd);
 	}
 	close(fd);

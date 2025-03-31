@@ -39,11 +39,12 @@ MLX = $(MLX_PATH)/libmlx_Linux.a
 SRCS =	src/gnl/get_next_line.c\
 		src/gnl/get_next_line_utils.c\
 		main.c\
-		utils.c\
 		parsing.c\
 		map_fill.c\
 		flood_fill.c\
-		image_treatment.c
+		image_treatment.c\
+		textures.c\
+		mooves.c
 
 
 #-----------------------------------------------------RULES-----------------------------------------------#

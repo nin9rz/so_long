@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:25:46 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/03/28 16:55:53 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/03/31 18:37:45 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include "src/gnl/get_next_line.h"
 
 /*------------Structures------------*/
-typedef struct	s_map
+typedef struct s_map
 {
 	char	**map;
 	int		width;
@@ -40,7 +40,13 @@ typedef struct s_game
 	void	*mlx;
 	void	*mlx_win;
 	void	*wall;
-	//ajouter autres textures (mm ligne qu'au-dessus)
+	void	*floor;
+	void	*left_sprite;
+	void	*right_sprite;
+	void	*collectible;
+	void	*exit;
+	void	*box_closed;
+	int		mooves;
 }	t_game;
 
 /*------------Parsing------------*/
@@ -57,12 +63,38 @@ char	**map_cpy(t_map OGmap);
 int		is_map_solvable(char **map);
 
 /*------------Images------------*/
+int		put_textures_on_screen(t_game *game);
 void	load_images(t_game *game);
+int		display_wall_texture(t_game *game);
+int		display_floor_texture(t_game *game);
+int		display_sprite_texture(t_game *game);
+int		display_collectible_texture(t_game *game);
+int		display_exit_texture(t_game *game);
+
+/*------------free------------*/
+void	free_all(t_game	game);
 
 /*------------keys------------*/
 int		key_hook(int keycode, t_game *game);
 
 /*------------key hooks------------*/
-# define	ESC_KEY	65307
+# define ESC_KEY	65307
+
+# define KEY_UP		65362
+# define KEY_LEFT	65361
+# define KEY_RIGHT	65363
+# define KEY_DOWN	65364
+
+# define KEY_W	119
+# define KEY_A	97
+# define KEY_S	115
+# define KEY_D	100
+
+/*------------Movements------------*/
+int		movement(t_game *game);
+void	mov_up(t_game *game);
+void	mov_down(t_game *game);
+void	mov_left(t_game *game);
+void	mov_right(t_game *game);
 
 #endif
