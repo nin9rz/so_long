@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 18:35:42 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/03/27 14:04:20 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/04/01 17:09:59 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ int	parse(char *file, t_game *game)
 {
 	if (!fill_map(file, game))
 		return (0);
+	if (!check_size(game))
+		return (0);
 	if (!is_map_rectangular(game))
 		return (0);
 	if (!get_player_position(game))
 		return (0);
+	get_collectibles_nbr(game);
 	if (!get_exit(game))
 		return (0);
 	if (!flood_fill(game->map))
@@ -38,7 +41,7 @@ int	get_player_position(t_game *game)
 	res = 0;
 	while (game->map.map[j])
 	{
-		while (game->map.map[j][i] != '\n')
+		while (game->map.map[j][i] != 0)
 		{
 			if (game->map.map[j][i] == 'P')
 			{
@@ -65,10 +68,12 @@ int	get_exit(t_game *game)
 	res = 0;
 	while (game->map.map[j])
 	{
-		while (game->map.map[j][i] != '\n')
+		while (game->map.map[j][i] != 0)
 		{
 			if (game->map.map[j][i] == 'E')
+			{
 				res = 1;
+			}
 			i++;
 		}
 		i = 0;
@@ -90,7 +95,7 @@ int	is_map_rectangular(t_game *game)
 		len = ft_strlen(temp);
 		if (game->map.width != len)
 		{
-			ft_printf("\nError : map not rectangular.");
+			ft_printf("\nError : map not rectangular.\n");
 			return (0);
 		}
 		i++;
@@ -103,7 +108,7 @@ int	check_errors(int error)
 {
 	if (error == 1)
 	{
-		ft_printf("Error : map file does not exist");
+		ft_printf("Error : map file does not exist\n");
 		return (0);
 	}
 	return (1);

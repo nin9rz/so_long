@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:55:15 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/03/31 17:05:51 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/04/01 17:12:09 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,18 @@ int	count_lines(char *file)
 	return (i);
 }
 
+char	*get_map_line(int fd)
+{
+	char	*temp;
+
+	temp = get_next_line(fd);
+	if (!temp)
+		return (temp);
+	if (temp[ft_strlen(temp) - 1] == '\n')
+		temp[ft_strlen(temp) - 1] = 0;
+	return (temp);
+}
+
 int	fill_map(char *file, t_game *game)
 {
 	int		i;
@@ -48,7 +60,7 @@ int	fill_map(char *file, t_game *game)
 	game->map.map = malloc((nbr_lines + 1) * sizeof(char *));
 	i = 0;
 	fd = open(file, O_RDONLY);
-	temp = get_next_line(fd);
+	temp = get_map_line(fd);
 	if (!temp)
 	{
 		ft_printf("Error : empty map file.\n");
@@ -58,10 +70,47 @@ int	fill_map(char *file, t_game *game)
 	while (i < nbr_lines)
 	{
 		game->map.map[i++] = temp;
-		temp = get_next_line(fd);
+		temp = get_map_line(fd);
 	}
 	close(fd);
 	game->map.map[i] = NULL;
 	game->map.height = nbr_lines;
+	return (1);
+}
+
+void	get_collectibles_nbr(t_game *game)
+{
+	int	res;
+	int	i;
+	int	j;
+
+	res = 0;
+	i = 0;
+	j = 0;
+	while (game->map.map[j])
+	{
+		while (game->map.map[j][i] != 0)
+		{
+			if (game->map.map[j][i] == 'C')
+				game->collectibles++;
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+}
+
+int	name_ok(char *str)
+{
+	char	*rep;
+
+	if (str == NULL)
+		return (0);
+	rep = ft_strnstr(str, ".ber", ft_strlen(str));
+	if (!rep)
+	{
+		ft_printf("Error : wrong file format, try 'file_name.ber'\n");
+		return (0);
+	}
 	return (1);
 }

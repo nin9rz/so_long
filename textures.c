@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 16:50:13 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/03/31 16:56:40 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/04/01 15:18:25 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	display_wall_texture(t_game *game)
 	j = 0;
 	while (game->map.map[j] != NULL)
 	{
-		while (game->map.map[j][i] != '\n')
+		while (game->map.map[j][i] != 0)
 		{
 			if (game->map.map[j][i] == '1')
 				mlx_put_image_to_window(game->mlx,
@@ -43,7 +43,7 @@ int	display_floor_texture(t_game *game)
 	j = 0;
 	while (game->map.map[j] != NULL)
 	{
-		while (game->map.map[j][i] != '\n')
+		while (game->map.map[j][i] != 0)
 		{
 			if (game->map.map[j][i] == '0')
 				mlx_put_image_to_window(game->mlx,
@@ -65,7 +65,7 @@ int	display_sprite_texture(t_game *game)
 	j = 0;
 	while (game->map.map[j] != NULL)
 	{
-		while (game->map.map[j][i] != '\n')
+		while (game->map.map[j][i] != 0)
 		{
 			if (game->map.map[j][i] == 'P')
 				mlx_put_image_to_window(game->mlx,
@@ -87,7 +87,7 @@ int	display_collectible_texture(t_game *game)
 	j = 0;
 	while (game->map.map[j] != NULL)
 	{
-		while (game->map.map[j][i] != '\n')
+		while (game->map.map[j][i] != 0)
 		{
 			if (game->map.map[j][i] == 'C')
 				mlx_put_image_to_window(game->mlx,
@@ -109,11 +109,14 @@ int	display_exit_texture(t_game *game)
 	j = 0;
 	while (game->map.map[j] != NULL)
 	{
-		while (game->map.map[j][i] != '\n')
+		while (game->map.map[j][i] != 0)
 		{
-			if (game->map.map[j][i] == 'E')
+			if (game->map.map[j][i] == 'E' && game->collectibles != 0)
 				mlx_put_image_to_window(game->mlx,
-					game->mlx_win, game->exit, (i * 64), (j * 64));
+					game->mlx_win, game->box_closed, (i * 64), (j * 64));
+			else if (game->map.map[j][i] == 'E' && game->collectibles == 0)
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->exit,
+					(i * 64), (j * 64));
 			i++;
 		}
 		i = 0;

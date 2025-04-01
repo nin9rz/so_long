@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:25:46 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/03/31 18:37:45 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:55:36 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,32 @@
 /*------------Structures------------*/
 typedef struct s_map
 {
-	char	**map;
-	int		width;
-	int		height;
-	int		posx;
-	int		posy;
+	char				**map;
+	int					width;
+	int					height;
+	int					posx;
+	int					posy;
 }	t_map;
 
 typedef struct s_game
 {
-	t_map	map;
-	void	*mlx;
-	void	*mlx_win;
-	void	*wall;
-	void	*floor;
-	void	*left_sprite;
-	void	*right_sprite;
-	void	*collectible;
-	void	*exit;
-	void	*box_closed;
-	int		mooves;
+	t_map				map;
+	void				*mlx;
+	void				*mlx_win;
+	void				*wall;
+	void				*floor;
+	void				*left_sprite;
+	void				*right_sprite;
+	void				*collectible;
+	void				*exit;
+	void				*box_closed;
+	int					mooves;
+	unsigned int		collectibles;
+	int					is_exit_possible;
 }	t_game;
 
 /*------------Parsing------------*/
+int		name_ok(char *str);
 int		check_errors(int error);
 int		fill_map(char *file, t_game *game);
 int		count_lines(char *file);
@@ -61,10 +64,12 @@ int		get_exit(t_game *game);
 void	flood(char **map, int x, int y);
 char	**map_cpy(t_map OGmap);
 int		is_map_solvable(char **map);
+void	get_collectibles_nbr(t_game *game);
+int		check_size(t_game *game);
 
 /*------------Images------------*/
 int		put_textures_on_screen(t_game *game);
-void	load_images(t_game *game);
+int		load_images(t_game *game);
 int		display_wall_texture(t_game *game);
 int		display_floor_texture(t_game *game);
 int		display_sprite_texture(t_game *game);
