@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:15:06 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/04/01 17:11:39 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/04/03 17:32:55 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	**map_cpy(t_map OGmap)
 	char	**map;
 	int		i;
 
-	map = malloc((OGmap.height + 1) * sizeof(char *));
+	map = ft_calloc((OGmap.height + 1), sizeof(char *));
 	i = 0;
 	while (OGmap.map[i])
 	{

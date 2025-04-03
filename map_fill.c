@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:55:15 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/04/01 17:12:09 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:39:15 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ char	*get_map_line(int fd)
 {
 	char	*temp;
 
+	if (fd < 0)
+		return (NULL);
 	temp = get_next_line(fd);
 	if (!temp)
 		return (temp);
 	if (temp[ft_strlen(temp) - 1] == '\n')
-		temp[ft_strlen(temp) - 1] = 0;
+		temp[ft_strlen(temp) - 1] = '\0';
 	return (temp);
 }
 
@@ -57,7 +59,7 @@ int	fill_map(char *file, t_game *game)
 	int		nbr_lines;
 
 	nbr_lines = count_lines(file);
-	game->map.map = malloc((nbr_lines + 1) * sizeof(char *));
+	game->map.map = ft_calloc((nbr_lines + 1), sizeof(char *));
 	i = 0;
 	fd = open(file, O_RDONLY);
 	temp = get_map_line(fd);
@@ -78,7 +80,7 @@ int	fill_map(char *file, t_game *game)
 	return (1);
 }
 
-void	get_collectibles_nbr(t_game *game)
+int	get_collectibles_nbr(t_game *game)
 {
 	int	res;
 	int	i;
@@ -98,6 +100,9 @@ void	get_collectibles_nbr(t_game *game)
 		i = 0;
 		j++;
 	}
+	if (game->collectibles == 0)
+		return (0);
+	return (1);
 }
 
 int	name_ok(char *str)

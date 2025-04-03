@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 18:35:42 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/04/01 17:09:59 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:27:16 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ int	parse(char *file, t_game *game)
 		return (0);
 	if (!is_map_rectangular(game))
 		return (0);
-	if (!get_player_position(game))
+	if (!check_borders(game))
 		return (0);
-	get_collectibles_nbr(game);
-	if (!get_exit(game))
+	if (!get_player_position(game) || !get_exit(game)
+		|| !get_collectibles_nbr(game))
+	{
+		ft_printf("Error : no player/exit/collectible on the map.\n");
 		return (0);
+	}
 	if (!flood_fill(game->map))
 		return (0);
 	return (1);

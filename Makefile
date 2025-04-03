@@ -44,7 +44,8 @@ SRCS =	src/gnl/get_next_line.c\
 		flood_fill.c\
 		image_treatment.c\
 		textures.c\
-		mooves.c
+		mooves.c\
+		errors.c
 
 
 #-----------------------------------------------------RULES-----------------------------------------------#

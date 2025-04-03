@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:25:46 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/04/01 16:55:36 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:09:23 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,12 @@ int		get_exit(t_game *game);
 void	flood(char **map, int x, int y);
 char	**map_cpy(t_map OGmap);
 int		is_map_solvable(char **map);
-void	get_collectibles_nbr(t_game *game);
+int		get_collectibles_nbr(t_game *game);
 int		check_size(t_game *game);
+int		check_borders(t_game *game);
+int		check_right_and_left(t_game *game);
+int		check_top(t_game *game);
+int 	check_bottom(t_game *game);
 
 /*------------Images------------*/
 int		put_textures_on_screen(t_game *game);

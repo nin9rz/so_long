@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:53:36 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/04/01 17:14:21 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/04/03 17:30:09 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	free_map(char **map)
 	int	i;
 
 	i = 0;
+	if (map == NULL)
+		return ;
 	while (map[i])
 	{
 		free(map[i]);
