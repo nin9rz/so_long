@@ -2,7 +2,7 @@
 <br>
 A project i made during my cursus at 42Angoulême<br>
 <br>
-![Screenshot from 2025-04-07 14-33-51](https://github.com/user-attachments/assets/57256e75-7075-4c78-a281-59f1cd068232)<br>
+![Screenshot from 2025-04-07 14-33-51](https://github.com/user-attachments/assets/57256e75-7075-4c78-a281-59f1cd068232) <br>
 <br>
 ## Table of Contents<br>
 1. [Installation](#installation)<br>
