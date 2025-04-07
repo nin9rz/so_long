@@ -2,16 +2,18 @@
 <br>
 A project i made during my cursus at 42Angoulême<br>
 <br>
+ 
 ![img](https://github.com/user-attachments/assets/c3843a6e-aa24-42cc-a006-cafd019882c3)
- <br>
+ 
 <br>
-## Table of Contents<br>
+<br>
+## Table of Contents
 1. [Installation](#installation)<br>
 2. [Run the project](#runtheproject)<br>
 3. [The project](#theproject)<br>
 <br>
 <br>
-# Installation<br>
+# Installation 
 <br>
 To install so_short, you have to clone this repo on your computer using the following command : <br>
 <br>
