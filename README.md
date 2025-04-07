@@ -12,17 +12,17 @@ A project i made during my cursus at 42Angoulême
 
 # Installation
 
-To install so_short, you have to clone this repo on your computer using the following command : 
-  https://github.com/nin9rz/so_long.git
-After that, you just have to install the minilibx (the graphic library i used to code this game) available on this page :
-  https://github.com/42Paris/minilibx-linux 
-Then you'll have the project on your computer and you just have to run it !
+To install so_short, you have to clone this repo on your computer using the following command : <br>
+  https://github.com/nin9rz/so_long.git<br>
+After that, you just have to install the minilibx (the graphic library i used to code this game) available on this page :<br>
+  https://github.com/42Paris/minilibx-linux <br>
+Then you'll have the project on your computer and you just have to run it !<br>
 
 # Run so_short
 
-To run so_short, you just have to type "make" in your terminal in the main folder. It should compile the files correctly.
-After that all you have to do is to write "./so_long maps/*whatever map you want*" in your terminal and now you can play !!
-You're free to create a map if you want to :)
+To run so_short, you just have to type "make" in your terminal in the main folder. It should compile the files correctly.<br>
+After that all you have to do is to write "./so_long maps/*whatever map you want*" in your terminal and now you can play !!<br>
+You're free to create a map if you want to :)<br>
 
 # The project
 
