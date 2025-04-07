@@ -1,4 +1,4 @@
-### so_short
+# so_short
 
 ## Table of Contents
 1. [Installation](#installation)
