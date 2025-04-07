@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:25:46 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/04/03 14:09:23 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/04/07 14:29:04 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_game
 /*------------Parsing------------*/
 int		name_ok(char *str);
 int		check_errors(int error);
-int		fill_map(char *file, t_game *game);
+int		fill_map(char *file, t_game *game, int nbr_lines);
 int		count_lines(char *file);
 int		is_map_rectangular(t_game *game);
 int		parse(char *file, t_game *game);

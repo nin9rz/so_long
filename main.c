@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 14:53:36 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/04/03 17:30:09 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/04/07 13:57:02 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	game.mlx_win = mlx_new_window(game.mlx,
-			((game.map.width) * 64), (game.map.height * 64), "so_short");
+		((game.map.width) * 64), (game.map.height * 64), "so_short");
 	if (game.mlx_win && load_images(&game))
 		game_start(&game);
 	free_all(game);

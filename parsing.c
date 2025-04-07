@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 18:35:42 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/04/03 18:27:16 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/04/07 14:28:12 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	parse(char *file, t_game *game)
 {
-	if (!fill_map(file, game))
+	if (!fill_map(file, game, count_lines(file)))
 		return (0);
 	if (!check_size(game))
 		return (0);

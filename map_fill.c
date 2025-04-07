@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:55:15 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/04/03 18:39:15 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/04/07 14:28:39 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,12 @@ char	*get_map_line(int fd)
 	return (temp);
 }
 
-int	fill_map(char *file, t_game *game)
+int	fill_map(char *file, t_game *game, int	nbr_lines)
 {
 	int		i;
 	int		fd;
 	char	*temp;
-	int		nbr_lines;
 
-	nbr_lines = count_lines(file);
 	game->map.map = ft_calloc((nbr_lines + 1), sizeof(char *));
 	i = 0;
 	fd = open(file, O_RDONLY);
@@ -66,10 +64,11 @@ int	fill_map(char *file, t_game *game)
 	if (!temp)
 	{
 		ft_printf("Error : empty map file.\n");
+		close(fd);
 		return (0);
 	}
 	game->map.width = ft_strlen(temp);
-	while (i < nbr_lines)
+	while (temp != NULL)
 	{
 		game->map.map[i++] = temp;
 		temp = get_map_line(fd);

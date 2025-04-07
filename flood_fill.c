@@ -6,7 +6,7 @@
 /*   By: jenibaud <jenibaud@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:15:06 by jenibaud          #+#    #+#             */
-/*   Updated: 2025/04/03 17:32:55 by jenibaud         ###   ########.fr       */
+/*   Updated: 2025/04/07 13:57:50 by jenibaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,20 @@ char	**map_cpy(t_map OGmap)
 
 void	flood(char **map, int x, int y)
 {
-	if (map[x][y] == 'E')
+	if (map[y][x] == 'E')
 	{
-		map[x][y] = '1';
+		map[y][x] = '1';
 		return ;
 	}
-	map[x][y] = '1';
-	if (map[x -1][y] != '1')
-		flood(map, x -1, y);
-	if (map[x][y +1] != '1')
-		flood(map, x, y +1);
-	if (map[x +1][y] != '1')
+	map[y][x] = '1';
+	if (map[y -1][x] != '1')
+		flood(map, x , y -1);
+	if (map[y][x +1] != '1')
 		flood(map, x +1, y);
-	if (map[x][y -1] != '1')
-		flood(map, x, y -1);
+	if (map[y +1][x] != '1')
+		flood(map, x, y +1);
+	if (map[y][x -1] != '1')
+		flood(map, x -1, y);
 }
 
 int	is_map_solvable(char **map)
