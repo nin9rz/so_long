@@ -11,9 +11,9 @@ A project i made during my cursus at 42Angoulême<br>
 2. [Run the project](#runtheproject)<br>
 3. [The project](#theproject)<br>
 <br>
-<br>
+
 # Installation 
-<br>
+
 To install so_short, you have to clone this repo on your computer using the following command : <br>
 <br>
   https://github.com/nin9rz/so_long.git<br>
