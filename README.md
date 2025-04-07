@@ -28,11 +28,11 @@ You're free to create a map if you want to :)
 
 So_long is a project where you have to code a little 2D game from a map designed like this : 
 
-1111111111111\n
-10010000000C1\n
-1000011111001\n
-1P0011E000001\n
-1111111111111\n
+1111111111111
+10010000000C1
+1000011111001
+1P0011E000001
+1111111111111
 
 '1' are the walls.
 '0' are the parts of the floor.
